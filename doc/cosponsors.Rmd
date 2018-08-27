@@ -348,7 +348,7 @@ df_bills <- df_bills %>%
 # Save result
 
   save(bill_container, 
-       file = '/a/ha-nfs-2-ib/export/data/bswift-1/eajones3/result.RData')
+       file = 'YOUR DIRECTORY HERE/result.RData')
 ```
 
 [Return to 'An Introduction to Web Scraping'](main_lab.html)
