@@ -1,0 +1,79 @@
+---
+title: "Understanding Robots.txt"
+author: "Evan Jones"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+  theme: cayman
+  highlight: vignette
+vignette: >
+  %\VignetteIndexEntry{robots}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+`Robots.txt` are a website's 'rules of conduct' for web crawlers trawling their server. They are text documents telling your bot *if*, *how*, and *which* part of the website is open for scraping. Most websites you are interested in crawling will have one, and many sites prohibit crawling of any kind. When trying to extract information from websites, you ought to know what the `robots.txt` says and how to abide by it to avoid legal issues down the line (I don't know about you, but I can't afford a legal retainer fee on top of UMD's mandatory fees).
+
+
+## Rules
+
+
+**1) Open access**
+
+&ensp;&ensp;&ensp;&ensp;&ensp;*User-agent: \**
+
+&ensp;&ensp;&ensp;&ensp;&ensp;*Disallow:*
+
+If you see this, good news: all pages on the website are fair game for your crawler.
+
+**2) Block all access**
+
+&ensp;&ensp;&ensp;&ensp;&ensp; *User-agent: \**
+
+&ensp;&ensp;&ensp;&ensp;&ensp;*Disallow: /*
+
+If you see a forward-slash next to disallow, this means everything down to the root node (/) of the server is off-limits. Avoid crawling such sites.
+
+**3) Partial access**
+
+&ensp;&ensp;&ensp;&ensp;&ensp;*User-agent: \**
+
+&ensp;&ensp;&ensp;&ensp;&ensp;*Disallow: /folder/*
+
+&ensp;&ensp;&ensp;&ensp;&ensp;*User-agent: \**
+
+&ensp;&ensp;&ensp;&ensp;&ensp;*Disallow: /file.html*
+
+Sometimes sites disallow crawling particular folders or files. Make sure your bot avoids these areas.
+
+**4) Crawl rate limit**
+
+&ensp;&ensp;&ensp;&ensp;&ensp;*Crawl-delay: 7*
+
+A crawl rate limit instructs you to slow your bot down. In other words, do not overload the server with repeated requests. This is basic etiquette as it can make the site slow for human visitors. In this example, the site asks that robots crawl with a 7 second delay in between requests.
+
+**5) Visit time**
+
+&ensp;&ensp;&ensp;&ensp;&ensp;*Visit-time: 0400-0845*
+
+The visit time stipulation indicates the which hours of the day the website is open for crawling. In this example, the website can be crawled between 4:00 and 8:45 UTC. Limiting crawling hours avoids the server from being overloaded during peak hours.
+
+**6) Request rate**
+
+*Request-rate: 1/10*
+
+Slightly different than crawl-delay, request-rate limits the *number* of pages that can be requested and the *frequency* of requests. In this example, only 1 page can be fetched every 10 seconds.
+
+[Here](https://www.congress.gov/robots.txt) is a real example of the `robots.txt` file for the Congress.gov site we will be scraping. As you can see, for all bots there should be a two second delay between requests, and for googlebot (google's search engine crawler) specifically, crawling within the search function of congress.gov is forbidden.
+
+
+## General Rule of Thumb for Scraping versus Crawling
+
+
+If you want to write a crawler that will continuously scrape data from a website or regularly trawl it for updated content, be sure to abide by the rules outlined in the `robots.txt`. If you just want to extract data from a website once (a simple scrape), but are confused or unsure as to whether you can scrape the page, a good rule of thumb is if the content is visible for human consumption in your browser, you are safe to scrape it (assuming you abide by any crawl-delays and request-rates).
+
+[Return to 'An Introduction to Web Scraping'](main_lab.html)

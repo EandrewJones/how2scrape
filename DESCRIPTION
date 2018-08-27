@@ -1,0 +1,19 @@
+Package: how2scrape
+Title: A Self-Contained Web Scraping Lab
+Version: 0.0.1
+Authors@R: person("Evan", "Jones", email = "evan.a.jones3@gmail.com", role = c("aut", "cre"))
+Author: Evan Jones
+Description: Bundles the package dependencies, data, and course materials.
+Depends: R (>= 3.5.1)
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Imports: 
+    furrr,
+    tidyverse
+Suggests:
+    doParallel,
+    foreach,
+    kable,
+    knitr
