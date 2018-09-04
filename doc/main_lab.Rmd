@@ -18,9 +18,9 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 When it comes to web scraping, there is good news and bad news. 
 
-The good news is the fundamentals of scraping are simple and `R` offers an array of great tools to assist us. Once you master, or become conversant in, a few packages---`rvest` (the go-to html parser in `R`), `httr`, and `rjson` or `jsonlite` (for API interfacing)---you are ready to tackle almost any web scraping task. For large web crawling endeavors or really difficult to parse objects, such as D3.js visualizations, other languages (java, python, etc.) may be better or necessary. Fortunately, `R` should meet 99 percent of our needs.
+The good news is the fundamentals of scraping are simple and `R` offers an array of great tools to assist us. Once you master, or become conversant in, a few packages---`rvest` (the go-to html parser in `R`), `httr`, and `rjson` or `jsonlite` (for API interfacing)---you are ready to tackle almost any web scraping task. For large web crawling endeavors or really difficult to parse objects, such as D3.js visualizations, other languages (java, python, etc.) may be better or necessary. Fortunately, `R` should meet 99 percent of one's basic needs.
 
-The bad news is that there is no cookie-cutter solution for web scraping. Websites are idiosyncratic beasts, ranging in quality and structure of the underlying code. Some sites look clean on the surface, but are riddled with invisible javascript and other structures that will derail your scraper, intentionally or not. Thus, the best we can do is cover the basics and then tailor our scripts to the specific task, addressing problems as they arise.
+The bad news is that there is no cookie-cutter solution for web scraping. Websites are idiosyncratic beasts, with their underlying code ranging in quality and structure. Some sites look clean on the surface, but are riddled with invisible javascript and other structures that will derail your scraper, intentionally or not. Thus, the best we can do is cover the basics andtailor our scripts to the specific task, addressing problems as they arise.
 
 # Web Scraping Etiquette
 
@@ -30,7 +30,7 @@ Each call to a web server takes time, server cycles, and memory. Most servers ca
 
 We do not want to be seen as committing a DOS for a couple reasons. First, such an overload can crash a server and keep other users from accessing the website. Second, servers and hosters can and will implement countermeasures (i.e. block our access from our IP and so on). We will cover ways to keep our scrapers from being seen as committing this type of attack.
 
-If you want to build crawler---continuously extract data from a website or group of websites in real time or anytime some change occurs---there are some additional considerations. Below is a list of best practices:
+If you want to build a crawler---continuously extract data from a website or group of websites in real time or anytime some change occurs---there are some additional considerations. Below is a list of best practices:
 
 1. Respect the [robots.txt](robots.html)
 2. Do not hit servers too frequently
@@ -43,7 +43,7 @@ If you want to build crawler---continuously extract data from a website or group
     + Determined by geo-location
     + Improves speed of your scrape
 5. Use data responsibly
-    + I like to think grad students and professors are responsible
+    + Usually not applicable for academic use
     + Regardless, make sure you are in compliance with website's TOS
     
 # What's in a Website and How Do We Extract It?
@@ -60,7 +60,7 @@ Before pulling out the scalpel and dissecting a web page to shreds, make sure th
 2. You get access to the controller via an API
 3. You get your information from the view, i.e. web scraping
 
-Today, we will focus on option 3. I intend to add a lab on how to use APIs in `R` (and eventually `Python`) in the future. In the meantime, if you want to learn how to work with an APIs, here are two good blog posts: [[1](https://tclavelle.github.io/blog/r_and_apis/)]  [[2](https://tophcito.blogspot.com/2015/11/accessing-apis-from-r-and-little-r.html)]
+Today, we will focus on option 3. I intend to add a lab on how to use APIs in `R` (and eventually `Python`) in the future. In the meantime, if you want to learn how to work with APIs, here are two good blog posts: [[1](https://tclavelle.github.io/blog/r_and_apis/)]  [[2](https://tophcito.blogspot.com/2015/11/accessing-apis-from-r-and-little-r.html)]
 
 So what is behind the view we see in our web browser? Typically, it's a combination of HTML (XML) and javascript. If you've never seen HTML, here is an example:
 
@@ -80,7 +80,7 @@ So what is behind the view we see in our web browser? Typically, it's a combinat
   <table>
 ~~~
 
-We can use html's tree structure of tags and attributes to locate the desired information and feed this information to an XML parser, i.e. `rvest`. Normally, identifying the tags and attributes requires reading through the source code of the web page. Fortunately for us, there is an amazing tool called the [SelectorGadget](https://selectorgadget.com/) that will identify the perfect [CSS selector](https://www.w3.org/TR/CSS2/selector.html) for us to extract what we need. Please download and install the SelectorGadget now if you have not already.
+We can use html's tree structure of tags and attributes to locate the desired information and feed this information to an XML parser, i.e. `rvest`. Normally, identifying the tags and attributes requires reading through the source code of the web page. Fortunately, there is an amazing tool called the [SelectorGadget](https://selectorgadget.com/) that will identify the perfect [CSS selector](https://www.w3.org/TR/CSS2/selector.html) for us to extract what we need. Please download and install the SelectorGadget now if you have not already.
 
 Most websites will also contain javascript which tells the browser how to visually structure the page. Javascript makes websites easily digestable for human consumers, but can cause problems for scrapers.
 
@@ -88,13 +88,13 @@ Most websites will also contain javascript which tells the browser how to visual
 
 The best coding strategy for writing and scaling up a web scraper depends on your needs. Perhaps you need only extract information from one strucutre (e.g. a table) on one web page. If so, you are in luck as the code to execute such a task is simple (see [here](simple_scrape.html) for an example). However, for more interesting and challenging projects, we should conceptualize the website as consisting of two things: a *typical page* and the *frontier*.
 
-A *typical page* is the page containing the information we want to extract. The *frontier* lists all of the typical pages we seek to scrape. Sometimes websites contain a page listing the data we'd like to scrape. Other times the frontier is the results from a search query. Once we have identified the typical page and frontier, we figure out how to extract the data we want from the former and iterate over the latter. Ideally, the typical page is consistently structured across the frontier so that our algorithm maps smoothly. 
+A *typical page* is the page containing the information we want to extract. The *frontier* lists all of the typical pages we seek to scrape. Sometimes websites contain a page listing the data we'd like to scrape. Other times the frontier is the result from a search query. Once we have identified the typical page and frontier, we figure out how to extract the data we want from the former and iterate over the latter. Ideally, the typical page is consistently structured across the frontier so that our algorithm maps smoothly. 
 
 Let's dig into a tangible example.
 
 # Scraping Congress.gov
 
-Perhaps we are interested in gathering information about legislation introduced into the current session of Congress. The first step is to identify our typical page. I went to www.congress.gov > Advanced Searches  and refined the query to contain only Bills (H.R. or S.) from the 115<sup>th</sup> Congress (2017-2018). Additionally, I asked the query to show 250 results per page. Here's the [link](https://www.congress.gov/search?q={%22source%22:%22legislation%22,%22congress%22:%22115%22,%22type%22:%22bills%22}&pageSize=250) for your convenience. With our typical page in hand, we need to decide what information we want to extract. I intend to store the following:
+Perhaps we are interested in gathering information about legislation introduced into the current session of Congress. The first step is to identify our typical page. Go to www.congress.gov > Advanced Searches  and refine the query to contain only Bills (H.R. or S.) from the 115<sup>th</sup> Congress (2017-2018). Additionally, ask the query to show 250 results per page. Here's the [link](https://www.congress.gov/search?q={%22source%22:%22legislation%22,%22congress%22:%22115%22,%22type%22:%22bills%22}&pageSize=250) for your convenience. With a typical page in hand, we need to decide what information we want to extract. I intend to store the following:
 
 1. Bill number
 2. Short title
@@ -104,7 +104,7 @@ Perhaps we are interested in gathering information about legislation introduced 
 6. Committees
 7. Text of the bill
 
-Most of this information is on our typical page and so is easy to extract; however, cosponsor names and the text of the bill will be on separate typical pages over which we'll need to individually enumerate. Altogether, this makes for three typical pages and frontiers. Let's begin with the first typical page.
+Most of this information is on our typical page and so is easy to extract. However, cosponsor names and the text of the bill are on separate typical pages over which we'll need to individually enumerate. Altogether, this makes for three typical pages and frontiers. Let's begin with the first typical page.
 
 ```{r}
 # libraries
@@ -134,7 +134,7 @@ bill_number <- html.legislation %>%
 
 ```
 
-Hold up! Each bill number is listed twice... What's going on? Alas, it's our old arch-nemesis, javascript. If you look at the source code of this page, you will find that each bill is duplicated. Our browser only shows the content rendered visible by javascript, but rvest reads in both. What to do?
+Hold up! Each bill number is listed twice... What's going on? Alas, it's our old arch nemesis, javascript! If you look at the source code of this page, you will find that each bill is duplicated. Our browser only shows the content rendered visible by javascript, but rvest reads in both. What to do?
 
 As the StackOverflow gods will tell you, the most correct solution for creating scalable, robust crawlers is to use a headless WebKit scriptable such as `PhantomJS` with a Selenium (`RSelenium`) backend server. There is a high startup costs to get these tools running correctly, so if you face a problem requiring these come talk with me. Otherwise, there's a simpler solution.
 
@@ -213,7 +213,7 @@ df_bills <- data.frame(bill_number,
                        stringsAsFactors = F)
 ```
 
-Now that we have the code to extract what we want from typical page, we should write this into a function that we can then map over the frontier. To save time and headaches, I have provided a debugged function below that accounts for idiosyncrasies from other pages that break a function based solely on the code above. Trial and error is unavoidable when scraping. You will have to write a generic function, map it across the frontier, see what errors arise, and tweak your code from there. If you want to see my debugging process in-depth, go here (INSERT LINK WHEN ON GITHUB)
+Now that we have the code to extract what we want from typical page, we should write this into a function that we can then map over the frontier. To save time and headaches, I have provided a debugged function below that accounts for idiosyncrasies from other pages that break a loop based solely on the code above. Trial and error is unavoidable when scraping. You will have to write a generic function, map it across the frontier, see what errors arise, and tweak your code from there. If you want to see my debugging process in-depth, go here (INSERT LINK WHEN ON GITHUB)
 
 ```{r}
 # Function to extract data from typical page
@@ -326,7 +326,7 @@ N_pages <- ceiling(N_bills / 250)
 frontier <- paste0('https://www.congress.gov/search?q={"source":"legislation","congress":"115","type":"bills"}&pageSize=250&page=', seq(1,N_pages))
 ```
 
-With the frontier in vector format, we are ready to put our scraper into full operation. There a couple of options for doing so. One option is to loop over our function. However, `R` is a functional language and does not like loops. A second option is to use a function like `lapply`. However, this is bound to be slow given how much data we are scraping. To speed things up a lot, we can capitalize on `furrr`, a package that combines the multiprocessing power of the `future` package with `purrr`'s family of map functions. As an added bonus, `furrr` plays nicely with `dplyr`.
+With the frontier in vector format, we are ready to put our scraper into operation. There a couple of options for doing so. One option is to loop over our function. However, `R` is a functional language and does not like loops. A second option is to use a function like `lapply`. However, this is bound to be slow given how much data we are scraping. To speed things up a lot, we can capitalize on `furrr`, a package that combines the multiprocessing power of the `future` package with `purrr`'s family of map functions. As an added bonus, `furrr` plays nicely with `dplyr`.
 
 ```{r}
 # For multiprocessing our map across the frontier
@@ -359,7 +359,6 @@ df_bills %>%
 ```
 
 With the primary data set in hand, I will conclude the main lab. With the links to the cosponsor  and text pages included in the data frame, it is easy to write an additional scraping function to extract these data. If you are interested in seeing how this is done or simply want more practice with scrapers follow the link below.
-
 
 
 # [How to Extract Bill Cosponsors and Text](cosponsors.html)

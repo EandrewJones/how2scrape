@@ -76,7 +76,7 @@ df.un_contributions %>%
 
 The data frane contains unwanted text, so we'll have clean it up a bit. Nonetheless, `rvest` has done the bulk of the heavy lifting for us. Let's tidy things up.
 
-*Note: I like the %<>% pipe operator from* `magrittr` *to modify data frames in place and make my code cleaner. However, this can be dangerous/annoying if you make a mistake and overwrite your object.*
+*Note: I like the %<>% pipe operator from* `magrittr` *to modify data frames in place and make my code cleaner. However, this can be dangerous/annoying if you make a mistake and overwrite your object. Use at your own discretion.*
 
 
 ```{r}
@@ -123,8 +123,8 @@ Voila! We now have a malleable data frame that we can use for analysis or mergin
 
 
 ```{r}
-
 # Extract second table
+
 df.un_contributions_monthly <- html.un_contributions %>% 
   html_nodes('table') %>% 
   .[[2]] %>% 
@@ -135,7 +135,7 @@ df.un_contributions_monthly <- html.un_contributions %>%
 If you are not familiar with the packages I used, here are some cheat sheets:
 
 1. [dplyr](images/data-transformation.pdf) (in the tidyverse)
-2. [lubridate](images/Times and Dates_lubridate.pdf)
+2. [lubridate](images/lubridate.pdf)
 3. [kable/kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#table_footnote)
 
 [Return to 'An Introduction to Web Scraping'](main_lab.html)

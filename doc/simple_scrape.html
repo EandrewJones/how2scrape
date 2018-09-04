@@ -12,7 +12,7 @@
 
 <meta name="author" content="Evan Jones" />
 
-<meta name="date" content="2018-08-27" />
+<meta name="date" content="2018-09-04" />
 
 <title>A Simple Scraping Exercise</title>
 
@@ -72,7 +72,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section class="page-header">
 <h1 class="title toc-ignore project-name">A Simple Scraping Exercise</h1>
 <h4 class="author project-author">Evan Jones</h4>
-<h4 class="date project-date">2018-08-27</h4>
+<h4 class="date project-date">2018-09-04</h4>
 </section>
 
 
@@ -139,16 +139,16 @@ X4
 <tbody>
 <tr>
 <td style="text-align:left;">
-As of 22 August 2018, 123 Member States have paid their regular budget assessments in full.
+As of 28 August 2018, 125 Member States have paid their regular budget assessments in full.
 </td>
 <td style="text-align:left;">
-As of 22 August 2018, 123 Member States have paid their regular budget assessments in full.
+As of 28 August 2018, 125 Member States have paid their regular budget assessments in full.
 </td>
 <td style="text-align:left;">
-As of 22 August 2018, 123 Member States have paid their regular budget assessments in full.
+As of 28 August 2018, 125 Member States have paid their regular budget assessments in full.
 </td>
 <td style="text-align:left;">
-As of 22 August 2018, 123 Member States have paid their regular budget assessments in full.
+As of 28 August 2018, 125 Member States have paid their regular budget assessments in full.
 </td>
 </tr>
 <tr>
@@ -844,19 +844,19 @@ Sweden
 <tr>
 <td style="text-align:left;">
 <ol start="2" style="list-style-type: upper-roman">
-<li>Subsequent to the end of the 30 day due period (9 February 2018), 75 additional Member States have paid their 2018 regular budget assessment in full.
+<li>Subsequent to the end of the 30 day due period (9 February 2018), 77 additional Member States have paid their 2018 regular budget assessment in full.
 </td>
 <td style="text-align:left;">
 <ol start="2" style="list-style-type: upper-roman">
-<li>Subsequent to the end of the 30 day due period (9 February 2018), 75 additional Member States have paid their 2018 regular budget assessment in full.
+<li>Subsequent to the end of the 30 day due period (9 February 2018), 77 additional Member States have paid their 2018 regular budget assessment in full.
 </td>
 <td style="text-align:left;">
 <ol start="2" style="list-style-type: upper-roman">
-<li>Subsequent to the end of the 30 day due period (9 February 2018), 75 additional Member States have paid their 2018 regular budget assessment in full.
+<li>Subsequent to the end of the 30 day due period (9 February 2018), 77 additional Member States have paid their 2018 regular budget assessment in full.
 </td>
 <td style="text-align:left;">
 <ol start="2" style="list-style-type: upper-roman">
-<li>Subsequent to the end of the 30 day due period (9 February 2018), 75 additional Member States have paid their 2018 regular budget assessment in full.
+<li>Subsequent to the end of the 30 day due period (9 February 2018), 77 additional Member States have paid their 2018 regular budget assessment in full.
 </td>
 </tr>
 <tr>
@@ -1924,6 +1924,34 @@ Sierra Leone
 </tr>
 <tr>
 <td style="text-align:left;">
+76
+</td>
+<td style="text-align:left;">
+Paraguay
+</td>
+<td style="text-align:left;">
+340,299
+</td>
+<td style="text-align:left;">
+24-Aug-18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:left;">
+Belarus
+</td>
+<td style="text-align:left;">
+1,361,196
+</td>
+<td style="text-align:left;">
+28-Aug-18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 </td>
@@ -1944,7 +1972,7 @@ Sierra Leone
 </ol></li>
 </ol>
 <p>The data frane contains unwanted text, so we’ll have clean it up a bit. Nonetheless, <code>rvest</code> has done the bulk of the heavy lifting for us. Let’s tidy things up.</p>
-<p><em>Note: I like the %&lt;&gt;% pipe operator from</em> <code>magrittr</code> <em>to modify data frames in place and make my code cleaner. However, this can be dangerous/annoying if you make a mistake and overwrite your object.</em></p>
+<p><em>Note: I like the %&lt;&gt;% pipe operator from</em> <code>magrittr</code> <em>to modify data frames in place and make my code cleaner. However, this can be dangerous/annoying if you make a mistake and overwrite your object. Use at your own discretion.</em></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remove unwanted attributes of the df, rename columns, and convert numbers and dates into malleable</span>
 <span class="co"># classes</span>
 
@@ -3722,11 +3750,40 @@ Sierra Leone
 1
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+Paraguay
+</td>
+<td style="text-align:right;">
+340299
+</td>
+<td style="text-align:left;">
+2018-08-24
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Belarus
+</td>
+<td style="text-align:right;">
+1361196
+</td>
+<td style="text-align:left;">
+2018-08-28
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 <p>Voila! We now have a malleable data frame that we can use for analysis or merging with another data set. For more practice, try cleaning up the monthly contributions data frame on your own. Below is some code to get you started:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extract second table</span>
+
 df.un_contributions_monthly &lt;-<span class="st"> </span>html.un_contributions <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">'table'</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>.[[<span class="dv">2</span>]] <span class="op">%&gt;%</span><span class="st"> </span>
@@ -3734,7 +3791,7 @@ df.un_contributions_monthly &lt;-<span class="st"> </span>html.un_contributions 
 <p>If you are not familiar with the packages I used, here are some cheat sheets:</p>
 <ol style="list-style-type: decimal">
 <li><a href="images/data-transformation.pdf">dplyr</a> (in the tidyverse)</li>
-<li><a href="images/Times%20and%20Dates_lubridate.pdf">lubridate</a></li>
+<li><a href="images/lubridate.pdf">lubridate</a></li>
 <li><a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#table_footnote">kable/kableExtra</a></li>
 </ol>
 <p><a href="main_lab.html">Return to ‘An Introduction to Web Scraping’</a></p>

@@ -16,7 +16,7 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-`Robots.txt` are a website's 'rules of conduct' for web crawlers trawling their server. They are text documents telling your bot *if*, *how*, and *which* part of the website is open for scraping. Most websites you are interested in crawling will have one, and many sites prohibit crawling of any kind. When trying to extract information from websites, you ought to know what the `robots.txt` says and how to abide by it to avoid legal issues down the line (I don't know about you, but I can't afford a legal retainer fee on top of UMD's mandatory fees).
+`Robots.txt` are a website's 'rules of conduct' for web crawlers trawling their server. They are text documents telling your bot *if*, *how*, and *which* part(s) of the website is open for scraping. Most websites you are interested in crawling will have one, and some sites prohibit crawling of any kind. When trying to extract information from websites, you ought to know what the `robots.txt` says and how to abide by it to avoid legal issues down the line (I don't know about you, but I can't afford a legal retainer fee on top of UMD's mandatory fees). To date, the only web scraping related cases that have been successfully litigated by companies were built on arguments that the crawler reduced the website's human traffic and, thus, ad revenue. Most other items in a website's terms of service are not legally enforceable. The moral of the story is if you take precautions not to overwhelm website, you shouldn't run into any problems.
 
 
 ## Rules
@@ -36,7 +36,7 @@ If you see this, good news: all pages on the website are fair game for your craw
 
 &ensp;&ensp;&ensp;&ensp;&ensp;*Disallow: /*
 
-If you see a forward-slash next to disallow, this means everything down to the root node (/) of the server is off-limits. Avoid crawling such sites.
+If you see a forward-slash next to disallow, this means everything down to the root node (/) of the database is off-limits. Avoid crawling such sites.
 
 **3) Partial access**
 
@@ -70,9 +70,7 @@ Slightly different than crawl-delay, request-rate limits the *number* of pages t
 
 [Here](https://www.congress.gov/robots.txt) is a real example of the `robots.txt` file for the Congress.gov site we will be scraping. As you can see, for all bots there should be a two second delay between requests, and for googlebot (google's search engine crawler) specifically, crawling within the search function of congress.gov is forbidden.
 
-
 ## General Rule of Thumb for Scraping versus Crawling
-
 
 If you want to write a crawler that will continuously scrape data from a website or regularly trawl it for updated content, be sure to abide by the rules outlined in the `robots.txt`. If you just want to extract data from a website once (a simple scrape), but are confused or unsure as to whether you can scrape the page, a good rule of thumb is if the content is visible for human consumption in your browser, you are safe to scrape it (assuming you abide by any crawl-delays and request-rates).
 
