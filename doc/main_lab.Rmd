@@ -213,7 +213,7 @@ df_bills <- data.frame(bill_number,
                        stringsAsFactors = F)
 ```
 
-Now that we have the code to extract what we want from typical page, we should write this into a function that we can then map over the frontier. To save time and headaches, I have provided a debugged function below that accounts for idiosyncrasies from other pages that break a loop based solely on the code above. Trial and error is unavoidable when scraping. You will have to write a generic function, map it across the frontier, see what errors arise, and tweak your code from there. If you want to see my debugging process in-depth, go here (INSERT LINK WHEN ON GITHUB)
+Now that we have the code to extract what we want from typical page, we should write this into a function that we can then map over the frontier. To save time and headaches, I have provided a debugged function below that accounts for idiosyncrasies from other pages that break a loop based solely on the code above. Trial and error is unavoidable when scraping. You will have to write a generic function, map it across the frontier, see what errors arise, and tweak your code from there. If you want to see my debugging process in-depth, go [here](https://github.com/EandrewJones/how2scrape/blob/master/doc/ext_scripts/debug_bill_extractor.R)
 
 ```{r}
 # Function to extract data from typical page
