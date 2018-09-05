@@ -41,7 +41,7 @@ df_bills %>%
 
 Pop that into your browser. Here's my view (results may vary depending on whether you are using a prepackaged or freshly scraped data set):
 
-![](images/cosponsors.png)
+![](../images/cosponsors.png)
 
 It looks 49 legislators wants to show their R-E-S-P-E-C-T for Aretha. Good. There are two sets of potentially useful data on this page: the names of cosponsors and their date of cosponsorship. This opens up even more opportunities for creative analyses. Not only could we do some type of cosponsorship network analysis, we could also do some time-series analysis on rates of cosponsorship by bill, legislator, etc.
 
@@ -120,7 +120,7 @@ As we did above, print out the link of the first bill and see what it looks like
 df_bills$text_link[1]
 ```
 
-![](images/text.png)
+![](../images/text.png)
 You may notice the link doesn't actually take us to the text of the bill. Instead, we end up on a summary tab. Moving over to the text tab, I notice two things: 
 
 1. The text of the bill is located at a different url than our stored links
@@ -212,7 +212,7 @@ text_extractor <- function(url) {
 
 Most of the function consists of string cleaning commands. The resulting text will still be a bit unstructured/messy due to variation across each bill, but it should get us close to what we want. With both these functions in place, we can move to the actual scraping process. 
 
-Unlike the initial bill scrape, this is a much larger operation due to the total number of pages. If we tried to execute this by sequentially mapping the two functions over their respective list of links, it would take approximately `r {round((2 * nrow(df_bills) * 1.5) / 3600, 2)}` hours (assuming 1.5 sec/link)! And that's a minimal estimate... To speed things up, I utilized a suite of parallel processing packages---`foreach`, `doParallel`, and `parallel`---and sent the script to the [BSOS HPC cluster](https://oacs.umd.edu/oacs-cloud/bsos-high-performance-computing-cluster). The script is available in the `how2scrape` package directory /doc/ext_scripts or from my [github](https://github.com/EandrewJones/how2scrape/blob/master/doc/ext_scripts/hpc_wslab.R). The resulting data frame is stored in the packaged as 'co_text'. As a final step, let's open it up and append the data to our primary data frame.
+Unlike the initial bill scrape, this is a much larger operation due to the total number of pages. If we tried to execute this by sequentially mapping the two functions over their respective list of links, it would take approximately `r {round((2 * nrow(df_bills) * 1.5) / 3600, 2)}` hours (assuming 1.5 sec/link)! And that's a minimal estimate... To speed things up, I utilized a suite of parallel processing packages---`foreach`, `doParallel`, and `parallel`---and sent the script to the [BSOS HPC cluster](https://oacs.umd.edu/oacs-cloud/bsos-high-performance-computing-cluster). The script is available in the `how2scrape` package directory './ext_scripts' or from my [github](https://github.com/EandrewJones/how2scrape/blob/master/ext_scripts/hpc_wslab.R). The resulting data frame is stored in the packaged as 'co_text'. As a final step, let's open it up and append the data to our primary data frame.
 
 ```{r, eval = F}
 # Load data

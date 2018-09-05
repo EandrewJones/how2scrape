@@ -140,11 +140,11 @@ As the StackOverflow gods will tell you, the most correct solution for creating 
 
 Moving back to the open browser and SelectorGadget, you'll notice that when you isolate the title's the SelectorGadget indicates 500 items are selected (see parentheses). Thus, we know the hidden elements are captured too. 
 
-![](images/hidden.png) 
+![](../images/hidden.png) 
 
 However, if we click the entire bill block, only 250 are selected.
 
-![](images/visible.png)
+![](../images/visible.png)
 
 SelectorGadget tells us that these nodes are identified by the '.expanded' css. It's very likely, then, that all the identifiers we want to use are nested within this css. Let's try:
 
@@ -213,7 +213,7 @@ df_bills <- data.frame(bill_number,
                        stringsAsFactors = F)
 ```
 
-Now that we have the code to extract what we want from typical page, we should write this into a function that we can then map over the frontier. To save time and headaches, I have provided a debugged function below that accounts for idiosyncrasies from other pages that break a loop based solely on the code above. Trial and error is unavoidable when scraping. You will have to write a generic function, map it across the frontier, see what errors arise, and tweak your code from there. If you want to see my debugging process in-depth, go [here](https://github.com/EandrewJones/how2scrape/blob/master/doc/ext_scripts/debug_bill_extractor.R)
+Now that we have the code to extract what we want from typical page, we should write this into a function that we can then map over the frontier. To save time and headaches, I have provided a debugged function below that accounts for idiosyncrasies from other pages that break a loop based solely on the code above. Trial and error is unavoidable when scraping. You will have to write a generic function, map it across the frontier, see what errors arise, and tweak your code from there. If you want to see my debugging process in-depth, go [here](https://github.com/EandrewJones/how2scrape/blob/master/ext_scripts/debug_bill_extractor.R)
 
 ```{r}
 # Function to extract data from typical page

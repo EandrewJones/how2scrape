@@ -49,7 +49,7 @@ html.un_contributions <- read_html('http://www.un.org/en/ga/contributions/honour
 Using the SelectorGadget we want to highlight only the table with information we seek to extract. This will most likely be part of a 'table' node class. You may have to click around a little to isolate the table.
 
 
-![](images/un_contribution.png)
+![](../images/un_contribution.png)
 
 
 The information is indeed stored in the 'table' node. Now all we have to do is point `rvest` towards this node. `rvest` will read this in as a list of tables and we'll have to extract each data frame individually.
@@ -134,8 +134,8 @@ df.un_contributions_monthly <- html.un_contributions %>%
 
 If you are not familiar with the packages I used, here are some cheat sheets:
 
-1. [dplyr](images/data-transformation.pdf) (in the tidyverse)
-2. [lubridate](images/lubridate.pdf)
+1. [dplyr](../images/data-transformation.pdf) (in the tidyverse)
+2. [lubridate](../images/lubridate.pdf)
 3. [kable/kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#table_footnote)
 
 [Return to 'An Introduction to Web Scraping'](main_lab.html)
