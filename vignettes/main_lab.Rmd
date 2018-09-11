@@ -11,10 +11,16 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\usepackage[utf8]{inputenc}
 ---
+# Available Vignettes
+
+1. [Robots.txt](robots.html)
+2. [A Simple Scraping Exercises](simple_scrape.html)
+3. [How to Extract Bill Cosponsors and Text](cosponsors.html)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
+# Web Scraping: A Mercurial Beast
 
 When it comes to web scraping, there is good news and bad news. 
 

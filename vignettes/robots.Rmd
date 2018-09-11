@@ -11,10 +11,16 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+# Available Vignettes
+
+1. [A Simple Scraping Exercises](simple_scrape.html)
+2. [An Introduction to Web Scraping](main_lab.html)
+3. [How to Extract Bill Cosponsors and Text](cosponsors.html)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# Respecting Terms of Service (TOS)...in Theory
 
 `Robots.txt` are a website's 'rules of conduct' for web crawlers trawling their server. They are text documents telling your bot *if*, *how*, and *which* part(s) of the website is open for scraping. Most websites you are interested in crawling will have one, and some sites prohibit crawling of any kind. When trying to extract information from websites, you ought to know what the `robots.txt` says and how to abide by it to avoid legal issues down the line (I don't know about you, but I can't afford a legal retainer fee on top of UMD's mandatory fees). To date, the only web scraping related cases that have been successfully litigated by companies were built on arguments that the crawler reduced the website's human traffic and, thus, ad revenue. Most other items in a website's terms of service are not legally enforceable. The moral of the story is if you take precautions not to overwhelm website, you shouldn't run into any problems.
 

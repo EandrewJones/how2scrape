@@ -11,9 +11,16 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+# Available Vignettes
+
+1. [Robots.txt](robots.html)
+2. [An Introduction to Web Scraping](main_lab.html)
+3. [How to Extract Bill Cosponsors and Text](cosponsors.html)
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
 ```
+# Back to the Basics
 
 Scraping information from a single web page is easy. To illustrate, I will use the [2018 United Nations Member Contributions](http://www.un.org/en/ga/contributions/honourroll.shtml) web page as an example.
 

@@ -11,9 +11,17 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+# Available Vignettes
+
+1. [Robots.txt](robots.html)
+2. [A Simple Scraping Exercises](simple_scrape.html)
+3. [An Introduction to Web Scraping](main_lab.html)
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
+# And Then Things Got More Complicated
+
 If you have arrived here after completing the main web scraping tutorial, great. You are ready to start this lab. If not, I highly recommend you start there first, otherwise you may feel a little lost. For the obstinate people that insist on starting here, you can load a prepackaged data set using `data('df_bills')`.
 
 I will assume you are familiar with the data set.
