@@ -1,0 +1,25 @@
+---
+title: "Accessing APIs"
+author: "Evan Jones & SoRelle Wyckoff Gaynor"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+  theme: cayman
+  highlight: vignette
+vignette: >
+  %\VignetteIndexEntry{api}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+# Available Vignettes
+
+1. [Introduction](introduction.html)
+2. [Robots.txt](robots.html)
+3. [A Simple Scraping Exercises](simple_scrape.html)
+4. [Web Scraping](web_scraping.html)
+5. [How to Extract Bill Cosponsors and Text](cosponsors.html)
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, cache = TRUE)
+```

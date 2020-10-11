@@ -1,6 +1,6 @@
 ---
 title: "How to Extract Bill Cosponsors and Text"
-author: "Evan Jones"
+author: "Evan Jones & SoRelle Wyckoff Gaynor"
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
@@ -13,12 +13,14 @@ vignette: >
 ---
 # Available Vignettes
 
-1. [Robots.txt](robots.html)
-2. [A Simple Scraping Exercises](simple_scrape.html)
-3. [An Introduction to Web Scraping](main_lab.html)
+1. [Introduction](introduction.html)
+2. [Robots.txt](robots.html)
+3. [Web Scraping](web_scraping.html)
+4. [A Simple Scraping Exercise](simple_scrape.html)
+5. [Accessing APIs](api.html)
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, cache = TRUE)
 ```
 # And Then Things Got More Complicated
 
@@ -51,9 +53,9 @@ Pop that into your browser. Here's my view (results may vary depending on whethe
 
 ![](../images/cosponsors.png)
 
-It looks 49 legislators wants to show their R-E-S-P-E-C-T for Aretha. Good. There are two sets of potentially useful data on this page: the names of cosponsors and their date of cosponsorship. This opens up even more opportunities for creative analyses. Not only could we do some type of cosponsorship network analysis, we could also do some time-series analysis on rates of cosponsorship by bill, legislator, etc.
+It looks 49 legislators wants to show their R-E-S-P-E-C-T for Aretha. Good. There are two sets of potentially useful data on this page: the names of cosponsors and their date of co-sponsorship. This opens up even more opportunities for creative analyses. Not only could we do some type of co-sponsorship network analysis, we could also do some time-series analysis on rates of co-sponsorship by bill, legislator, etc.
 
-The extraction process is no different that before. Using the [SelectorGadget](https://selectorgadget.com/), highlight and isolate the cosponsor names, extract them using `rvest` and do the same for the date of cosponsorship.
+The extraction process is no different that before. Using the [SelectorGadget](https://selectorgadget.com/) or [ScrapeMate](https://addons.mozilla.org/en-US/firefox/addon/scrapemate/), highlight and isolate the cosponsor names, extract them using `rvest` and do the same for the date of co-sponsorship.
 
 ```{r}
 # Define typical page url
@@ -73,13 +75,13 @@ cosponsors <- html.cosponsors %>%
   html_nodes('#main a') %>% 
   html_text()
 
-# Extract date of cosponsorship
+# Extract date of co-sponsorship
 date_cosponsor <- html.cosponsors %>% 
   html_nodes('td.date') %>% 
   html_text()
 ```
 
-Alright, it's fairly straightforward to get the data we want. However, there are two remaining issues. First, we have two vectors of data with length greater than one which we will ultimately want to append to a single observation. We could use list columns, but that makes later data manipulation more difficult. Avoid them if possible. We will need to decide how to collapse all this data in a way that can be intuitively expanded later (i.e. a long form data set). Second, we need to write this into a function with conditionals for one or greater cospsonsors. 
+Alright, it's fairly straightforward to get the data we want. However, there are two remaining issues. First, we have two vectors of data with length greater than one which we will ultimately want to append to a single observation. We could use list columns, but that makes later data manipulation more difficult. Avoid them if possible. We will need to decide how to collapse all this data in a way that can be intuitively expanded later (i.e. a long form data set). Second, we need to write this into a function with conditionals for one or greater co-spsonsors. 
 
 I have provided my solution below, but there are certainly others:
 ```{r, eval = F}
@@ -150,7 +152,7 @@ df_bills <- df_bills %>%
 
 The second issue is less computationally problematic. Except for the newest bills, the rest should have their text uploaded. Nonetheless, we can't be sure this is true and we don't want to waste time extracting meaningless text. We need to find an intuitive and consistent proxy for whether a bill has text or not and, eventually, write this into a conditional statement in our text extracting function. 
 
-I solved this by comparing bills with and without text. The bill text is stored in a '#billTextContainer' node. On the pages without text, this node is absent, and thus length==0. I use this as a proxy and write it into a conditional statement. By now, you should have a good idea of how to write a scraping function, so for the sake of space, I provide my text scraping function. I went through a multiple iterations of edits to get a function that captures most of the bills. The conditional statements are attempts to capture slight variations in bill structure across the frontier.
+I solved this by comparing bills with and without text. The bill text is stored in nodes with the id '#billTextContainer'. On the pages without text, this node is absent, and thus length==0. I use this as a proxy and write it into a conditional statement. By now, you should have a good idea of how to write a scraping function, so for the sake of space, I provide my text scraping function. I went through a multiple iterations of edits to get a function that captures most of the bills. The conditional statements are attempts to capture slight variations in bill structure across the frontier.
 
 ```{r, eval = F}
 text_extractor <- function(url) {
@@ -220,7 +222,11 @@ text_extractor <- function(url) {
 
 Most of the function consists of string cleaning commands. The resulting text will still be a bit unstructured/messy due to variation across each bill, but it should get us close to what we want. With both these functions in place, we can move to the actual scraping process. 
 
-Unlike the initial bill scrape, this is a much larger operation due to the total number of pages. If we tried to execute this by sequentially mapping the two functions over their respective list of links, it would take approximately `r {round((2 * nrow(df_bills) * 1.5) / 3600, 2)}` hours (assuming 1.5 sec/link)! And that's a minimal estimate... To speed things up, I utilized a suite of parallel processing packages---`foreach`, `doParallel`, and `parallel`---and sent the script to the [BSOS HPC cluster](https://oacs.umd.edu/oacs-cloud/bsos-high-performance-computing-cluster). The script is available in the `how2scrape` package directory './ext_scripts' or from my [github](https://github.com/EandrewJones/how2scrape/blob/master/ext_scripts/hpc_wslab.R). The resulting data frame is stored in the packaged as 'co_text'. As a final step, let's open it up and append the data to our primary data frame.
+Unlike the initial bill scrape, this is a much larger operation due to the total number of pages. If we sequentially execute the two functions over their respective list of links, it will take approximately `r {round((2 * nrow(df_bills) * 1.5) / 3600, 2)}` hours (assuming 1.5 sec/link)! And that's a minimal estimate... 
+Unfortunately, when web scraping, although each function call is embarrassingly parallel (no cross-task communication needed), the number of requests your computer can make is limited by your internet speed, internet service provider, and network chip. Therefore, the efficiency gains will not scale with the number of cores beyond a certain point. Rather, the best way to speed up requests is to distribute the scraper across computers. Distributed computing is a beast of its own that I won't cover here. 
+
+
+However, I will send this script to the [BSOS HPC cluster](https://oacs.umd.edu/oacs-cloud/bsos-high-performance-computing-cluster), using minimal parallelism and let it do the work. As a general rule, always pass off compute intensive tasks to remote servers if possible. Why strain your own PC? The script I use is available in the `how2scrape` package directory './ext_scripts' or from my [github](https://github.com/EandrewJones/how2scrape/blob/master/ext_scripts/hpc_wslab.R). The resulting data frame is stored in the packaged as 'co_text'. As a final step, let's open it up and append the data to our primary data frame.
 
 ```{r, eval = F}
 # Load data
@@ -242,4 +248,4 @@ df_bills <- df_bills %>%
 
 And with that, we have detailed information on over 10,000 bills from the current session of Congress. Go forth and scrape.
 
-[Return to 'An Introduction to Web Scraping'](main_lab.html)
+[Return to 'Web Scraping'](web_scraping.html)

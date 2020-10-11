@@ -1,6 +1,6 @@
 ---
 title: "A Simple Scraping Exercise"
-author: "Evan Jones"
+author: "Evan Jones & SoRelle Wyckoff Gaynor"
 date: "`r Sys.Date()`"
 output: 
   prettydoc::html_pretty:
