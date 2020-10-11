@@ -366,4 +366,3 @@ With the primary data set in hand, I will conclude the main lab. With the links 
 
 
 # [How to Extract Bill Cosponsors and Text](cosponsors.html)
-
