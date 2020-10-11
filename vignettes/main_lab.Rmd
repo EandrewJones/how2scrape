@@ -18,7 +18,7 @@ vignette: >
 3. [How to Extract Bill Cosponsors and Text](cosponsors.html)
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, cache = TRUE)
 ```
 # Web Scraping: A Mercurial Beast
 
@@ -188,14 +188,14 @@ sponsor <- html.legislation %>%
 # Extact number of co-sponsors
 
 N_cosponsors <- html.legislation %>% 
-  html_nodes('.expanded .result-item a~ a') %>% 
+  html_nodes('.expanded .result-item a~ strong+ a') %>% 
   html_text() %>% 
   as.numeric()
 
 # Extact link to co-sponsor names
 
 cosponsors_link <- html.legislation %>% 
-  html_nodes('.expanded .result-item a~ a') %>% 
+  html_nodes('.expanded .result-item a~ strong+ a') %>% 
   html_attrs() %>% 
   unlist() %>% 
   unname()
@@ -309,6 +309,8 @@ bill_extractor <- function(url) {
   assign('df_bills',
          value = df_bills,
          envir = .GlobalEnv)
+  
+  #
 }
 ```
 
@@ -332,24 +334,20 @@ N_pages <- ceiling(N_bills / 250)
 frontier <- paste0('https://www.congress.gov/search?q={"source":"legislation","congress":"115","type":"bills"}&pageSize=250&page=', seq(1,N_pages))
 ```
 
-With the frontier in vector format, we are ready to put our scraper into operation. There a couple of options for doing so. One option is to loop over our function. However, `R` is a functional language and does not like loops. A second option is to use a function like `lapply`. However, this is bound to be slow given how much data we are scraping. To speed things up a lot, we can capitalize on `furrr`, a package that combines the multiprocessing power of the `future` package with `purrr`'s family of map functions. As an added bonus, `furrr` plays nicely with `dplyr`.
+With the frontier in vector format, we are ready to put our scraper into operation. There a couple of options for doing so. One option is to loop over our function. However, `R` is a functional language and does not like loops. A second option is to use a function like `lapply`. However, I prefer `purrr`'s family of map functions because they play nicely with `dplyr`.
 
 ```{r}
-# For multiprocessing our map across the frontier
-require(furrr)
-
-# Initiate future
-plan(multiprocess)
+require(purrr)
 
 # Map across frontier
 df_bills <- frontier %>% 
-  future_map(., bill_extractor) %>% 
+  map(., bill_extractor) %>% 
   # we have a list of data frames now
   # combine into single df using plyr::rbind.fill()
   plyr::rbind.fill()
 ```
 
-And just like magic we have a data frame with all the bills from the 115<sup>th</sup> Congress. There's a small discrepancy between the length of the data frame and N_bills, suggesting a few bills fell in between the cracks. Most likely, these are the "Reserved for the Minority Leader/Speaker" bills. Overall, achieving `r {round((nrow(df) / N_bills) * 100, 2)}` percent coverage isn't too shabby! 
+And just like magic we have a data frame with all the bills from the 115<sup>th</sup> Congress. There's a small discrepancy between the length of the data frame and N_bills, suggesting a few bills fell in between the cracks. Most likely, these are the "Reserved for the Minority Leader/Speaker" bills. Overall, achieving `r {round((nrow(df_bills) / N_bills) * 100, 2)}` percent coverage isn't too shabby! 
 
 ```{r, echo=F}
 # Preview table
