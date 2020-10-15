@@ -1,6 +1,6 @@
 ---
 title: "Accessing APIs"
-author: "Evan Jones & SoRelle Wyckoff Gaynor"
+author: "Evan Jones"
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
@@ -23,3 +23,23 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, cache = TRUE)
 ```
+
+# What is an API?
+
+From [Wikipedia](https://en.wikipedia.org/wiki/API):
+
+> An application programming interface (API) is a computing interface which defines interactions between multiple software intermediaries. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc. It can also provide extension mechanisms so that users can extend existing functionality in various ways and to varying degrees.[1] An API can be entirely custom, specific to a component, or it can be designed based on an industry-standard to ensure interoperability. Through information hiding, APIs enable modular programming, which allows users to use the interface independently of the implementation.
+
+The above definition makes clear that the term API is all-encompassing and not specific to web scraping per se. The key for something to qualify as an API is that is abstracts the underlying implementation away and only exposes objects or actions the developer (researcher) needs. 
+
+In the case of web scraping where we are interested in the underlying database, an API acts as an interlocutor between us and the database. Rather than having to write specific SQL queries on the database to get desired information, we can utilize a url-like call to the API and it will return the data to us in a structured format--usually JSON. Below is an example of an API call to the USGPO published bills service:
+
+[https://api.govinfo.gov/published/2019-01-01/2019-07-31?offset=0&pageSize=100&collection=BILLS&api_key=8mxegYItU22NIxI50bz7tFBNbRXYmFCvdxe8jBec](https://api.govinfo.gov/published/2019-01-01/2019-07-31?offset=0&pageSize=100&collection=BILLS&api_key=8mxegYItU22NIxI50bz7tFBNbRXYmFCvdxe8jBec)
+
+When it comes to collecting data on the web, finding an API for your desired data is a godsend. No longer do you need to parse through ugly HTML and mess around with CSS selectors. Specify a few parameters in a url, send the request, and--voila!--there's your information.  
+
+# The USGPO Bulk Data Repository
+
+The US Government Publishing Office (GPO) offers a convenient [bulk data respository](https://www.govinfo.gov/bulkdata) that contains myriad documents including Congressional Bills, the Code of Federal Regulations, Public Papers of the Presidents, Supreme Court decisions, and so on. It is a treasure trove for researchers. Adding to the convenience of this one-stop shop for government documents is that the GPO provides an API for easily retrieving data.
+
+In the [Web Scraping](web_scraping.html) section I showed how to scrape Congressional Bills, but did so directly from [www.congress.gov](www.congress.gov), unaware of the fact that there was an API. In this lab, I provide a step-by-step tutorial on how to interact with the GPO bulk data repository using its API. 

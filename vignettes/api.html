@@ -32,8 +32,296 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic tbody tr:last-child td {
+border-bottom: 0.14em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+/* A workaround for https://github.com/jgm/pandoc/issues/4278 */
+a.sourceLine {
+  pointer-events: auto;
+}
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -68,6 +356,615 @@ document.addEventListener('DOMContentLoaded', function() {
 <li><a href="web_scraping.html">Web Scraping</a></li>
 <li><a href="cosponsors.html">How to Extract Bill Cosponsors and Text</a></li>
 </ol>
+</div>
+<div id="what-is-an-api" class="section level1">
+<h1>What is an API?</h1>
+<p>From <a href="https://en.wikipedia.org/wiki/API">Wikipedia</a>:</p>
+<blockquote>
+<p>An application programming interface (API) is a computing interface which defines interactions between multiple software intermediaries. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc. It can also provide extension mechanisms so that users can extend existing functionality in various ways and to varying degrees.[1] An API can be entirely custom, specific to a component, or it can be designed based on an industry-standard to ensure interoperability. Through information hiding, APIs enable modular programming, which allows users to use the interface independently of the implementation.</p>
+</blockquote>
+<p>The above definition makes clear that the term API is all-encompassing and not specific to web scraping per se. The key for something to qualify as an API is that is abstracts the underlying implementation away and only exposes objects or actions the developer (researcher) needs.</p>
+<p>In the case of web scraping where we are interested in the underlying database, an API acts as an interlocutor between us and the database. Rather than having to write specific SQL queries on the database to get desired information, we can utilize a url-like call to the API and it will return the data to us in a structured format–usually JSON. Below is an example of an API call to the USGPO published bills service:</p>
+<p><a href="https://api.govinfo.gov/published/2019-01-01/2019-07-31?offset=0&amp;pageSize=100&amp;collection=BILLS&amp;api_key=8mxegYItU22NIxI50bz7tFBNbRXYmFCvdxe8jBec">https://api.govinfo.gov/published/2019-01-01/2019-07-31?offset=0&amp;pageSize=100&amp;collection=BILLS&amp;api_key=8mxegYItU22NIxI50bz7tFBNbRXYmFCvdxe8jBec</a></p>
+<p>When it comes to collecting data on the web, finding an API for your desired data is a godsend. No longer do you need to parse through ugly HTML and mess around with CSS selectors. Specify a few parameters in a url, send the request, and–voila!–there’s your information.</p>
+</div>
+<div id="the-usgpo-bulk-data-repository" class="section level1">
+<h1>The USGPO Bulk Data Repository</h1>
+<p>The US Government Publishing Office (GPO) offers a convenient <a href="https://www.govinfo.gov/bulkdata">bulk data respository</a> that contains myriad documents including Congressional Bills, the Code of Federal Regulations, Public Papers of the Presidents, Supreme Court decisions, and so on. It is a treasure trove for researchers. Adding to the convenience of this one-stop shop for government documents is that the GPO provides an API for easily retrieving data.</p>
+<p>In past presentations I have <a href="https://www.ea-jones.com/talk/methods_workshop_fall2018/">discussed</a> how to scrape Congressional Bills, but did so directly from <a href="www.congress.gov">www.congress.gov</a>, unaware of the fact that there was an API. In this post, we provide a step-by-step tutorial on how to interact with the GPO bulk data repository using its API. We proceed in three parts. First, we walk through a series of functions for automating GPO API requests. Second, we put the functions in motion by pulling 200,000 + bills from US Congress. Finally, we do a network analysis of how bills are related via the statutes they amend.</p>
+<p>Though far more efficient than scraping the congress.gov domain, the API comes with its own set of idiosyncrasies that we will have to deal with. The GPO has a <a href="https://www.govinfo.gov/developers">developer hub</a> page. This is a good place to start if you want to get a better sense of the full range of services the GPO offers.</p>
+</div>
+<div id="getting-started" class="section level1">
+<h1>Getting Started</h1>
+<p>First, we’ll need some packages. In the code I provide, <code>rvest</code> is not necessary. Whenever I am first experimenting with API calls or any webscraping, I usually use the it–in this case, for <code>httr</code>–to parse through errors and figure out to navigate the requests. I then scale up my code using <code>jsonlite::fromJSON()</code> for the API calls. This function is more streamlined, providing cleaner results, but doesn’t directly provide the HTTP status code if you run into errors. The <code>tidyverse</code> et al. packages are for run-of-the-mill data manipulation. I use <code>(p/f)urrr</code> for their (parallelized) mapping functions as well as <code>possibly()</code> which safely wraps our final API calling function in case it fails. Finally, <code>memoise</code> provides a nice way to cache the results of repeatedly used functions, speeding up computation.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">require</span>(tidyverse) <span class="co"># Data cleaning</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">require</span>(tibble) <span class="co"># for is_tibble()</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">require</span>(magrittr) <span class="co"># for %&lt;&gt;% pipe</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">require</span>(lubridate) <span class="co"># manipulating times/dates</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">require</span>(rvest) <span class="co"># Basic scraping</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">require</span>(jsonlite) <span class="co"># API interfacing</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">require</span>(memoise) <span class="co"># Caching</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="kw">require</span>(furrr) <span class="co"># Parallel processing</span></span></code></pre></div>
+<p>We’re going to be making a lot of repetitive API calls. Let’s memoise fromJSON to make them faster.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>.fromJSON &lt;-<span class="st"> </span><span class="kw">memoise</span>(fromJSON)</span></code></pre></div>
+</div>
+<div id="requesting-and-registering-an-api-key" class="section level1">
+<h1>Requesting and Registering an API Key</h1>
+<p>To access the API, you must first request an API key from the data.gov website. Here’s the <a href="https://api.data.gov/signup/">link</a>. The form asks for your name and email address and will send the API key to you in an email. Once you receive the key, you will need to use it to send requests to the API. There are a numerous ways to make requests:</p>
+<ol style="list-style-type: decimal">
+<li>Pass it directly in the command line with <a href="https://api.data.gov/docs/api-key/">curl</a>.</li>
+<li>Manually via the <a href="https://api.govinfo.gov/docs/">web browser</a> (You have to authorize the key first).</li>
+<li>Directly from R using a package like <code>rvest</code> or <code>httr</code>.</li>
+</ol>
+<p>Since we are doing the third way, let’s write a function to register our key to the Global Environment. If we intended to call the API often or create an R package to wrap it, we would want to store the key in the <code>.Renviron</code>. Then the api key would load in the background every time we start R (see <a href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/">here</a> for a nice article on R’s Startup). However, the global environment suffices for a one-time use.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>register_apikey &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">key =</span> <span class="ot">NULL</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="co"># Check params</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="cf">if</span>(<span class="kw">is.null</span>(key)) <span class="kw">stop</span>(<span class="st">&#39;Must supply an API key.&#39;</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="kw">cat</span>(<span class="st">&#39;List of ways to pass API key: https://api.data.gov/docs/api-key/</span><span class="ch">\n</span><span class="st">&#39;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>      <span class="st">&#39;OR directly register here: https://api.govinfo.gov/docs/&#39;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  </span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="co"># Combine call parts</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  api &lt;-<span class="st"> &#39;api_key=&#39;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>  key &lt;-<span class="st"> </span>key</span>
+<span id="cb3-10"><a href="#cb3-10"></a>  api_key &lt;-<span class="st"> </span><span class="kw">paste0</span>(api,key)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>  </span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="co"># Assign to environment</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>  api_key &lt;&lt;-<span class="st"> </span>api_key</span>
+<span id="cb3-14"><a href="#cb3-14"></a>}</span></code></pre></div>
+</div>
+<div id="a-preliminary-look-at-the-bulk-data-repository" class="section level1">
+<h1>A Preliminary Look at the Bulk Data Repository</h1>
+<p>Before, diving into the Congressional Bills, it is nice to get a bird’s-eye view of the API and see what it has to offer. Below is a function that calls and returns a data frame of all the collections that can be requested via the API, how many items are in each collection, and so on.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>show_collections &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">key =</span> api_key) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="co"># Collections URL</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  collections_url &lt;-<span class="st"> &#39;https://api.govinfo.gov/collections&#39;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  </span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="co"># Get collections</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  call &lt;-<span class="st"> </span><span class="kw">.fromJSON</span>(<span class="kw">paste</span>(collections_url, api_key, <span class="dt">sep=</span><span class="st">&quot;?&quot;</span>))</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  df &lt;-<span class="st"> </span>call<span class="op">$</span>collections</span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="kw">return</span>(df)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>}</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:250px; overflow-x: scroll; width:100%; ">
+<table class="table table-hover" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+US GPO Bulk Data Collections
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+collectionCode
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+collectionName
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+packageCount
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+granuleCount
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+BILLS
+</td>
+<td style="text-align:left;">
+Congressional Bills
+</td>
+<td style="text-align:right;">
+222335
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BILLSTATUS
+</td>
+<td style="text-align:left;">
+Congressional Bill Status
+</td>
+<td style="text-align:right;">
+51903
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUDGET
+</td>
+<td style="text-align:left;">
+United States Budget
+</td>
+<td style="text-align:right;">
+307
+</td>
+<td style="text-align:right;">
+6170
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CCAL
+</td>
+<td style="text-align:left;">
+Congressional Calendars
+</td>
+<td style="text-align:right;">
+4324
+</td>
+<td style="text-align:right;">
+68170
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CDIR
+</td>
+<td style="text-align:left;">
+Congressional Directory
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+13721
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CDOC
+</td>
+<td style="text-align:left;">
+Congressional Documents
+</td>
+<td style="text-align:right;">
+3183
+</td>
+<td style="text-align:right;">
+8625
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CFR
+</td>
+<td style="text-align:left;">
+Code of Federal Regulations
+</td>
+<td style="text-align:right;">
+5252
+</td>
+<td style="text-align:right;">
+6192223
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHRG
+</td>
+<td style="text-align:left;">
+Congressional Hearings
+</td>
+<td style="text-align:right;">
+30605
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COMPS
+</td>
+<td style="text-align:left;">
+Statutes Compilations
+</td>
+<td style="text-align:right;">
+2027
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CPD
+</td>
+<td style="text-align:left;">
+Compilation of Presidential Documents
+</td>
+<td style="text-align:right;">
+12073
+</td>
+<td style="text-align:right;">
+23012
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CPRT
+</td>
+<td style="text-align:left;">
+Congressional Committee Prints
+</td>
+<td style="text-align:right;">
+1457
+</td>
+<td style="text-align:right;">
+1492
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CREC
+</td>
+<td style="text-align:left;">
+Congressional Record
+</td>
+<td style="text-align:right;">
+4768
+</td>
+<td style="text-align:right;">
+674241
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CRECB
+</td>
+<td style="text-align:left;">
+Congressional Record (Bound Edition)
+</td>
+<td style="text-align:right;">
+2390
+</td>
+<td style="text-align:right;">
+436869
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CRI
+</td>
+<td style="text-align:left;">
+Congressional Record Index
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+557203
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CRPT
+</td>
+<td style="text-align:left;">
+Congressional Reports
+</td>
+<td style="text-align:right;">
+16268
+</td>
+<td style="text-align:right;">
+508
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CZIC
+</td>
+<td style="text-align:left;">
+Coastal Zone Information Center
+</td>
+<td style="text-align:right;">
+4888
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ECFR
+</td>
+<td style="text-align:left;">
+Electronic Code of Federal Regulations
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ECONI
+</td>
+<td style="text-align:left;">
+Economic Indicators
+</td>
+<td style="text-align:right;">
+306
+</td>
+<td style="text-align:right;">
+14683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ERIC
+</td>
+<td style="text-align:left;">
+Education Reports from ERIC
+</td>
+<td style="text-align:right;">
+573
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ERP
+</td>
+<td style="text-align:left;">
+Economic Report of the President
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+2588
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FR
+</td>
+<td style="text-align:left;">
+Federal Register
+</td>
+<td style="text-align:right;">
+21326
+</td>
+<td style="text-align:right;">
+847506
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GAOREPORTS
+</td>
+<td style="text-align:left;">
+Government Accountability Office Reports and Comptroller General Decisions
+</td>
+<td style="text-align:right;">
+16569
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GOVMAN
+</td>
+<td style="text-align:left;">
+United States Government Manual
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+4109
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GOVPUB
+</td>
+<td style="text-align:left;">
+Bulk Submission
+</td>
+<td style="text-align:right;">
+31051
+</td>
+<td style="text-align:right;">
+314
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GPO
+</td>
+<td style="text-align:left;">
+Additional Government Publications
+</td>
+<td style="text-align:right;">
+3245
+</td>
+<td style="text-align:right;">
+79560
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HJOURNAL
+</td>
+<td style="text-align:left;">
+Journal of the House of Representatives
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+33948
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HMAN
+</td>
+<td style="text-align:left;">
+House Rules and Manual
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+1740
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HOB
+</td>
+<td style="text-align:left;">
+History of Bills
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+259597
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LSA
+</td>
+<td style="text-align:left;">
+List of CFR Sections Affected
+</td>
+<td style="text-align:right;">
+288
+</td>
+<td style="text-align:right;">
+14915
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PAI
+</td>
+<td style="text-align:left;">
+Privacy Act Issuances
+</td>
+<td style="text-align:right;">
+1343
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAW
+</td>
+<td style="text-align:left;">
+Public and Private Laws
+</td>
+<td style="text-align:right;">
+5070
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PPP
+</td>
+<td style="text-align:left;">
+Public Papers of the Presidents of the United States
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+23648
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SMAN
+</td>
+<td style="text-align:left;">
+Senate Manual
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1039
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STATUTE
+</td>
+<td style="text-align:left;">
+Statutes at Large
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+35700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+USCODE
+</td>
+<td style="text-align:left;">
+United States Code
+</td>
+<td style="text-align:right;">
+1234
+</td>
+<td style="text-align:right;">
+1583056
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+USCOURTS
+</td>
+<td style="text-align:left;">
+United States Courts Opinions
+</td>
+<td style="text-align:right;">
+1401091
+</td>
+<td style="text-align:right;">
+2995658
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>As you can see, there are 34 available collections including every drab document you could ever want from the US government and more. Collection document counts range from 6 for the Senate Manual to 1,156,005 for Court Opinions. The first column provides the collection code we will use in our API request (BILLS).</p>
+</div>
+<div id="automating-the-requests" class="section level1">
+<h1>Automating the Requests</h1>
+<p>The GPO’s <a href="https://github.com/usgpo/api">github page</a> offers clear advice on how to request information from a given collection. Requests must be passed to GET in the following format:</p>
+<blockquote>
+<p><a href="https://api.govinfo.gov/collections/%7Bcollection%7D/%7BstartDate%7D?offset=%7B#%7D&amp;pagsize=%7B#%7D&amp;api_key=YOUR_KEY" class="uri">https://api.govinfo.gov/collections/{collection}/{startDate}?offset={#}&amp;pagsize={#}&amp;api_key=YOUR_KEY</a></p>
+</blockquote>
+<p>where <code>collection</code> is the collection code and <code>startDate</code> is the beginning time period of the request. <code>offset</code> will move your through pages (I set it to zero and avoid using it altogether below) and <code>pagesize</code> determines how many items are returned per request page. There is a 10000 item limit on collections responses. This means that if your update range is too broad, you may need to narrow it down using the <code>endDate</code> parameter which is paled after <code>startDate</code> separated by a /.</p>
+<p>Note the earliest startDate is no earlier than 2017-01-01 even though the dates of the content within each collection predates this. The reason is because the packages (content) in each collection are dated according to when they were <em>last modified</em> in the database. When combined with their 10,000 item request limit, this ends up being a major flaw in my opinion and is a <a href="https://github.com/usgpo/api/issues/19#issuecomment-428292313">known issue</a>.</p>
+<p>We want to scrape all the bills from the collection, but can only do so in increments of 10,000. This wouldn’t be a huge hassle if the bills were last modified in batches over a relatively even interval. Of course, that’s not the case. For example, there is a two day period (May 20, 2018 - May 22, 2018) in which 197,569 bills were modified within which there are two 2-hour periods with 49,465 and 148,104 bills…</p>
 </div>
 </section>
 
