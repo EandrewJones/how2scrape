@@ -7,7 +7,7 @@
 openLab(name = "main")
 }
 \arguments{
-\item{name}{Name of the lab to open. Defaults to 'main'. Options include 'robots', 'simple', and 'cosponsors'}
+\item{name}{Name of the lab to open. Defaults to 'intro'. Options include 'robots', 'simple', 'web_scraping', 'cosponsors', and 'api'.}
 }
 \description{
 This function allows you to open the lab files.
