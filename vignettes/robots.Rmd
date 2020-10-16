@@ -13,9 +13,11 @@ vignette: >
 ---
 # Available Vignettes
 
-1. [A Simple Scraping Exercises](simple_scrape.html)
-2. [An Introduction to Web Scraping](main_lab.html)
-3. [How to Extract Bill Cosponsors and Text](cosponsors.html)
+1. [Introduction](introduction.html)
+2. [A Simple Scraping Exercise](simple_scrape.html)
+3. [Web Scraping](web_scraping.html)
+4. [How to Extract Bill Cosponsors and Text](cosponsors.html)
+5. [Accessing APIs](api.html)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -80,4 +82,4 @@ Slightly different than crawl-delay, request-rate limits the *number* of pages t
 
 If you want to write a crawler that will continuously scrape data from a website or regularly trawl it for updated content, be sure to abide by the rules outlined in the `robots.txt`. If you just want to extract data from a website once (a simple scrape), but are confused or unsure as to whether you can scrape the page, a good rule of thumb is if the content is visible for human consumption in your browser, you are safe to scrape it (assuming you abide by any crawl-delays and request-rates).
 
-[Return to 'An Introduction to Web Scraping'](main_lab.html)
+[Return to Introduction](introduction.html)

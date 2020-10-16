@@ -309,7 +309,4 @@ df_bills %>%
 
 With the primary data set in hand, we can stop here. Further information about the cosponsors and bill text can be gather by scraping these pages via their respective links in the data frame. We just need to employ the same strategy we did here. If you are interested in seeing how this is done or simply want more practice with scrapers follow the link below.
 
-
-# [How to Extract Bill Cosponsors and Text](cosponsors.html)
-
-
+# [How to Extract Bill Cosponsors and Text](cosponsors.html) or [Accessing APIs](api.html)

@@ -13,9 +13,11 @@ vignette: >
 ---
 # Available Vignettes
 
-1. [Robots.txt](robots.html)
-2. [An Introduction to Web Scraping](main_lab.html)
-3. [How to Extract Bill Cosponsors and Text](cosponsors.html)
+1. [Introduction](introduction.html)
+2. [Robots.txt](robots.html)
+3. [Web Scraping](web_scraping.html)
+4. [How to Extract Bill Cosponsors and Text](cosponsors.html)
+5. [Accessing APIs](api.html)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
@@ -145,4 +147,4 @@ If you are not familiar with the packages I used, here are some cheat sheets:
 2. [lubridate](../images/lubridate.pdf)
 3. [kable/kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#table_footnote)
 
-[Return to 'An Introduction to Web Scraping'](main_lab.html)
+[Return to 'Web Scraping'](web_scraping.html)

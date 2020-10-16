@@ -250,4 +250,4 @@ str(bill_info)
 
 We see bill_info is a list with 30 different pieces of information about each bill. There are multiple ways we could go about this depending on our needs. One crude approach would be to store the output of each call as an entry in a `list-column` in our `df_bills` data frame and then pull out information as needed later. Otherwise, if you knew *a priori* which information you wanted about each bill, you could write a function to make the api request, extract just the need information, and append this to each row of `df_bills`. Either way, I leave that up to you to explore since I've covered how to work with the API.
 
-[Return to 'Web Scraping'](web_scraping.html)
+[Return to 'Introduction'](introduction.html)
